@@ -1,1 +1,156 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>fr. 1 di Lutazio Catulo</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Georgia', serif;
+      background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #b30059;
+      margin-bottom: 30px;
+    }
+    .container {
+      display: flex;
+      gap: 20px;
+    }
+    .column {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      line-height: 1.6;
+      font-size: 1.1em;
+    }
+    .word {
+      cursor: pointer;
+      padding: 2px 4px;
+      transition: background-color 0.3s ease;
+    }
+    .highlight {
+      background-color: #ffff99;
+    }
+    p {
+      margin: 0 0 1em;
+    }
+  </style>
+</head>
+<body>
+  <h1>fr. 1 di Lutazio Catulo</h1>
+  <div class="container">
+    <!-- Testo latino (layout esattamente come fornito) -->
+    <div class="column" id="latin">
+      <!-- Linea 1 -->
+      <p>
+        <span class="word" data-match="match1">Aufugit</span>
+        <span class="word" data-match="match2">mi</span>
+        <span class="word" data-match="match3">animus:</span>
+        <span class="word" data-match="match4">credo,</span>
+        <span class="word" data-match="match5">ut solet,</span>
+        <span class="word" data-match="match6">ad Theotimum</span>
+      </p>
+      <!-- Linea 2 -->
+      <p>
+        <span class="word" data-match="match7">devenit.</span>
+        <span class="word" data-match="match8">Sic est:</span>
+        <span class="word" data-match="match9">perfugium</span>
+        <span class="word" data-match="match10">illud</span>
+        <span class="word" data-match="match11">habet.</span>
+      </p>
+      <!-- Linea 3 -->
+      <p>
+        <span class="word" data-match="match12">Quid si</span>
+        <span class="word" data-match="match13">non interdixem</span>
+        <span class="word" data-match="match14">ne illune fugitivum</span>
+      </p>
+      <!-- Linea 4 -->
+      <p>
+        <span class="word" data-match="match14">mitteret ad se intro,</span>
+        <span class="word" data-match="match16">sed magis eiceret?</span>
+      </p>
+      <!-- Linea 5 -->
+      <p>
+        <span class="word" data-match="match17">Ibimus quaesitum.</span>
+        <span class="word" data-match="match18">Verum,</span>
+        <span class="word" data-match="match19">ne ipsi teneamur</span>
+      </p>
+      <!-- Linea 6 -->
+      <p>
+        <span class="word" data-match="match20">formido.</span>
+        <span class="word" data-match="match21">Quid ago?</span>
+        <span class="word" data-match="match22">Da, Venus, consilium.</span>
+      </p>
+    </div>
+    <!-- Testo italiano (layout esattamente come fornito) -->
+    <div class="column" id="italian">
+      <!-- Linea 1 -->
+      <p>
+        <span class="word" data-match="match3">la (mia) anima</span>
+        <span class="word" data-match="match2">mi</span>
+        <span class="word" data-match="match1">è fuggita;</span>
+        <span class="word" data-match="match5">come al solito,</span>
+        <span class="word" data-match="match4">credo,</span>
+        <span class="word" data-match="match6">da Teotimo</span>
+      </p>
+      <!-- Linea 2 -->
+      <p>
+        <span class="word" data-match="match7">è andata.</span>
+        <span class="word" data-match="match8">È così:</span>
+        <span class="word" data-match="match11">ha</span>
+        <span class="word" data-match="match10">quel</span>
+        <span class="word" data-match="match9">rifugio.</span>
+      </p>
+      <!-- Linea 3 -->
+      <p>
+        <span class="word" data-match="match12">Che cosa (accadrebbe) se</span>
+        <span class="word" data-match="match13">non gli avessi proibito</span>
+      </p>
+      <!-- Linea 4 -->
+      <p>
+        <span class="word" data-match="match14">di accogliere dentro di sé quel fuggitivo,</span>
+      </p>
+      <!-- Linea 5 -->
+      <p>
+        <span class="word" data-match="match16">ma piuttosto (gli avessi ordinato) di cacciarlo?</span>
+      </p>
+      <!-- Linea 6 -->
+      <p>
+        <span class="word" data-match="match17">Andrò a cercarla.</span>
+        <span class="word" data-match="match18">Ma</span>
+        <span class="word" data-match="match19">d’essere io stesso catturato</span>
+      </p>
+      <!-- Linea 7 -->
+      <p>
+        <span class="word" data-match="match20">ho gran paura.</span>
+        <span class="word" data-match="match21">Che faccio?</span>
+        <span class="word" data-match="match22">dammi tu, Venere, un consiglio.</span>
+      </p>
+    </div>
+  </div>
+  <script>
+    // Mapping interattivo: quando il cursore passa sopra una parola, si illumina anche il suo corrispettivo
+    document.querySelectorAll('.word').forEach(function(word) {
+      word.addEventListener('mouseenter', function() {
+        const matchId = this.getAttribute('data-match');
+        document.querySelectorAll('[data-match="' + matchId + '"]').forEach(function(el) {
+          el.classList.add('highlight');
+        });
+      });
+      word.addEventListener('mouseleave', function() {
+        const matchId = this.getAttribute('data-match');
+        document.querySelectorAll('[data-match="' + matchId + '"]').forEach(function(el) {
+          el.classList.remove('highlight');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
 
